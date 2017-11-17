@@ -22,6 +22,21 @@ class VirtManager < Formula
   depends_on :x11
   # TODO: audio
 
+  resource "libvirt-python" do
+    url "https://libvirt.org/sources/python/libvirt-python-3.9.0.tar.gz"
+    sha256 "d721c812e002eb784a4b66fbe698dc70e8f42c9b7cc3a96f5b01e83ee7951850"
+  end
+
+  resource "requests" do
+    url "https://pypi.io/packages/source/r/requests/requests-2.18.4.tar.gz"
+    sha256 "9c443e7324ba5b85070c4a818ade28bfabedf16ea10206da1132edaa6dda237e"
+  end
+
+  resource "ipaddr" do
+    url "https://pypi.io/packages/source/i/ipaddr/ipaddr-2.2.0.tar.gz"
+    sha256 "4092dfe667588d16aa12b59acb7c8a4024e5dcb23a681cd0b0b602373eca88d6"
+  end
+
   patch :DATA # OS X does not conform to PEP 394, python2 symlink missing
 
   def install
