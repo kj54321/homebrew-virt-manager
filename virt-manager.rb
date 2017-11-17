@@ -15,7 +15,7 @@ class VirtManager < Formula
   depends_on "libosinfo"
   depends_on "libvirt"
   depends_on "libvirt-glib"
-  depends_on "libxml2" => "with-python"
+  depends_on "libxml2" => "with-python3"
   depends_on "pygobject3"
   depends_on "spice-gtk"
   depends_on "vte3"
@@ -40,17 +40,17 @@ class VirtManager < Formula
   patch :DATA # OS X does not conform to PEP 394, python2 symlink missing
 
   def install
-    ENV.prepend_create_path "PYTHONPATH", "#{libexec}/vendor/lib/python2.7/site-packages"
+    ENV.prepend_create_path "PYTHONPATH", "#{libexec}/vendor/lib/python3.6/site-packages"
     %w[libvirt-python requests ipaddr].each do |r|
       resource(r).stage { system "python", *Language::Python.setup_install_args(libexec/"vendor") }
     end
 
-    ENV.prepend_path "PYTHONPATH", "#{Formula["libxml2"].opt_lib}/python2.7/site-packages"
+    ENV.prepend_path "PYTHONPATH", "#{Formula["libxml2"].opt_lib}/python3.6/site-packages"
 
-    system "python", "setup.py",
+    system "python3", "setup.py",
                      "configure",
                      "--prefix=#{libexec}"
-    system "python", "setup.py",
+    system "python3", "setup.py",
                      "--no-user-cfg",
                      "--no-update-icon-cache",
                      "--no-compile-schemas",
@@ -81,7 +81,7 @@ index 4bd5ca3..6b4b9e5 100755
 +++ b/virt-clone
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python2
-+#!/usr/bin/env python
++#!/usr/bin/env python3
  #
  # Copyright(c) FUJITSU Limited 2007.
  #
@@ -91,7 +91,7 @@ index a7f9a97..2f1ca7a 100755
 +++ b/virt-convert
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python2
-+#!/usr/bin/env python
++#!/usr/bin/env python3
  #
  # Copyright 2008, 2013, 2014  Red Hat, Inc.
  # Joey Boggs <jboggs@redhat.com>
@@ -101,7 +101,7 @@ index 45607fb..4f9cf9e 100755
 +++ b/virt-install
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python2
-+#!/usr/bin/env python
++#!/usr/bin/env python3
  #
  # Copyright 2005-2014 Red Hat, Inc.
  #
@@ -111,7 +111,7 @@ index d352b90..5fccceb 100755
 +++ b/virt-manager
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python2
-+#!/usr/bin/env python
++#!/usr/bin/env python3
  #
  # Copyright (C) 2006, 2014 Red Hat, Inc.
  # Copyright (C) 2006 Daniel P. Berrange <berrange@redhat.com>
@@ -121,7 +121,7 @@ index 4e0848c..eb40bfa 100755
 +++ b/virt-xml
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python2
-+#!/usr/bin/env python
++#!/usr/bin/env python3
  #
  # Copyright 2013-2014 Red Hat, Inc.
  # Cole Robinson <crobinso@redhat.com>
