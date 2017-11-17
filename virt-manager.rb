@@ -1,8 +1,8 @@
 class VirtManager < Formula
   desc "App for managing virtual machines"
   homepage "https://virt-manager.org/"
-  url "https://virt-manager.org/download/sources/virt-manager/virt-manager-1.4.1.tar.gz"
-  sha256 "e6c549999f14fbda210c07821910bfa35c086542e166f8b00d7c83717e9f3944"
+  url "https://virt-manager.org/download/sources/virt-manager/virt-manager-1.4.3.tar.gz"
+  sha256 "528226b9a0fdd6cd66451a8217fc7c87f3deb6bebd08599c25fe5c7291fe6a24"
 
   depends_on "intltool" => :build
   depends_on "pkg-config" => :build
@@ -21,21 +21,6 @@ class VirtManager < Formula
   depends_on "vte3"
   depends_on :x11
   # TODO: audio
-
-  resource "libvirt-python" do
-    url "https://libvirt.org/sources/python/libvirt-python-3.4.0.tar.gz"
-    sha256 "afa77781f518988f164dd5f99d1844034ca807a8e731e07cbae18474d250b511"
-  end
-
-  resource "requests" do
-    url "https://pypi.io/packages/source/r/requests/requests-2.12.5.tar.gz"
-    sha256 "d902a54f08d086a7cc6e58c20e2bb225b1ae82c19c35e5925269ee94fb9fce00"
-  end
-
-  resource "ipaddr" do
-    url "https://pypi.io/packages/source/i/ipaddr/ipaddr-2.1.11.tar.gz"
-    sha256 "1b555b8a8800134fdafe32b7d0cb52f5bdbfdd093707c3dd484c5ea59f1d98b7"
-  end
 
   patch :DATA # OS X does not conform to PEP 394, python2 symlink missing
 
